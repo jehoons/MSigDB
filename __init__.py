@@ -1,14 +1,11 @@
-__all__ = ['dataloader']
 import os
-from dataloader import dataloader  
-import pandas as pd 
+import pandas as pd
+import dataloader
 
 _baseurl = 'http://143.248.32.25/~jhsong/dataset/GSEA'
-_loader = dataloader(_baseurl+'/msigdb.v6.0.symbols.gmt');
-
 
 def return_loader(): 
-    return _loader
+    return dataloader._dataloader(_baseurl+'/msigdb.v6.0.symbols.gmt')
 
 
 def load_msigdb():
@@ -21,16 +18,8 @@ def load_msigdb():
         group = l0[0]
         wwwsite = l0[1]
         geneset = l0[2:]
-        msigdb[group] = {
-            'wwwsite': wwwsite, 
-            'geneset': geneset
-        }
-        
+        msigdb[group] = {'wwwsite': wwwsite, 'geneset': geneset}
+    
     return msigdb
 
-
-def test_this():
-    import dataset_msigdb
-    dataset = dataset_msigdb.load_msigdb()
     
-    xx
