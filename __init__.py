@@ -1,11 +1,19 @@
 import os
-import pandas as pd
-import dataloader
+import pandas as pd 
+from os.path import dirname, exists, join
 
-_baseurl = 'http://143.248.32.25/~jhsong/dataset/GSEA'
+module_dir = dirname(__file__)
+repo = 'git@github.com:jehoons/downloader.git'
+
+if not exists(join(module_dir, 'downloader')): 
+    os.system('git clone %s %s/downloader' % (repo, module_dir))
+
+from downloader import _downloader
+
 
 def return_loader(): 
-    return dataloader._dataloader(_baseurl+'/msigdb.v6.0.symbols.gmt')
+    _baseurl = 'http://143.248.32.25/~jhsong/dataset/GSEA'
+    return _downloader(_baseurl+'/msigdb.v6.0.symbols.gmt')
 
 
 def load_msigdb():
@@ -21,5 +29,8 @@ def load_msigdb():
         msigdb[group] = {'wwwsite': wwwsite, 'geneset': geneset}
     
     return msigdb
+
+
+
 
     
