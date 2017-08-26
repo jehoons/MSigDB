@@ -3,10 +3,9 @@ import pandas as pd
 from os.path import dirname, exists, join
 
 module_dir = dirname(__file__)
-repo = 'git@github.com:jehoons/downloader.git'
-
-if not exists(join(module_dir, 'downloader')): 
-    os.system('git clone %s %s/downloader' % (repo, module_dir))
+#repo = 'git@github.com:jehoons/downloader.git'
+#if not exists(join(module_dir, 'downloader')): 
+#    os.system('git clone %s %s/downloader' % (repo, module_dir))
 
 from downloader import _downloader
 
