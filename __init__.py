@@ -21,7 +21,7 @@ def load_msigdb():
         
     msigdb = {} 
     for l0 in lines: 
-        l0 = l0.split('\t')
+        l0 = l0.strip().split('\t')
         group = l0[0]
         wwwsite = l0[1]
         geneset = l0[2:]
