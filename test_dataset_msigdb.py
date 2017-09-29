@@ -5,24 +5,25 @@ import pytest
 # def test_1():    
 #     print(dataset.keys())
 
-def test_2():
-    # dataset = dataset_msigdb.load_msigdb()
-    res = {} 
+def test_find_APQ_terms():
+
+    res = {}
+
     for k in dataset.keys():
-        for s in ['PROLIF','APOPT','QUIESCENT','ARREST']:
+        for n,s in [('proliferation','PROLIF'),('apoptosis','APOPT'),('quiescence','QUIESCENT'),('arrest','ARREST')]:
             if k.find(s)>=0:
                 # print(k)
                 # res[s]
-                if s not in res: 
-                    res[s] = []
+                if n not in res: 
+                    res[n] = []
 
-                res[s].append(k)
+                res[n].append(k)
 
     import json 
 
-    with open('chk-phenotypes.json', 'w') as f: 
+    with open('chk-A-P-Q.json', 'w') as f: 
         json.dump(res, f, indent=4)
-    
-    # xxx
 
-dataset = dataset_msigdb.load_msigdb()    
+
+dataset = dataset_msigdb.load_msigdb()
+
